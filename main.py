@@ -2,18 +2,25 @@ import json
 
 SEEN_FILE = "seen_items.json"
 
+# Load existing seen items
 with open(SEEN_FILE, "r", encoding="utf-8") as f:
-    seen_items = json.load(f)
+    seen = json.load(f)
 
-test_link = "https://example.com/test-selkie-listing"
+print(f"Already tracking {len(seen)} items.")
 
-if test_link not in seen_items:
-    seen_items.append(test_link)
-    print("Added test item.")
+# Fake listing for testing
+listing = {
+    "title": "Test Selkie Listing",
+    "url": "https://example.com/test"
+}
+
+if listing["url"] in seen:
+    print("Already seen.")
 else:
-    print("Test item was already seen.")
+    print("New listing found!")
+    seen.append(listing["url"])
 
-with open(SEEN_FILE, "w", encoding="utf-8") as f:
-    json.dump(seen_items, f, indent=2)
+    with open(SEEN_FILE, "w", encoding="utf-8") as f:
+        json.dump(seen, f, indent=2)
 
-print("Seen items file updated successfully.")
+    print("Saved.")
