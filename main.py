@@ -85,8 +85,15 @@ for title, link, site in matches:
     unique[link] = (title, link, site)
 
 print(f"Found {len(unique)} possible match(es).")
-
-for title, link, site in unique.values():
+if not unique:
+    msg = EmailMessage()
+    msg["Subject"] = "Selkie Hunter ran: no matches"
+    msg["From"] = sender
+    msg["To"] = recipient
+    msg.set_content("Selkie Hunter ran successfully but found no possible matches.")
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(sender, password)
+        smtp.send_message(msg)for title, link, site in unique.values():
     send_email(title, link, site)
     print(f"Email sent for: {title}")
 
