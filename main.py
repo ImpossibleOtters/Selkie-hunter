@@ -83,22 +83,42 @@ for site in SITES:
 unique = {}
 for title, link, site in matches:
     unique[link] = (title, link, site)
-
 print(f"Found {len(unique)} possible match(es).")
 
-if not unique:
+SEEN_FILE = "seen_items.json"
+
+try:
+    with open(SEEN_FILE, "r", encoding="utf-8") as f:
+        seen_items = json.load(f)
+except FileNotFoundError:
+        seen_items = []
+
+new_matches = []
+
+for link, item in unique.items():
+    if link not in seen_items:
+        new_matches.append(item)
+        seen_items.append(link)
+
+if not new_matches:
     msg = EmailMessage()
-    msg["Subject"] = "Selkie Hunter ran: no matches"
+    msg["Subject"] = "Selkie Hunter ran: no new matches"
     msg["From"] = sender
     msg["To"] = recipient
-    msg.set_content("Selkie Hunter ran successfully but found no possible matches.")
+    msg.set_content(
+        "Selkie Hunter ran successfully but found no new listings."
+    )
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(sender, password)
         smtp.send_message(msg)
+
 else:
-    for title, link, site in unique.values():
+    for title, link, site in new_matches:
         send_email(title, link, site)
         print(f"Email sent for: {title}")
+
+with open(SEEN_FILE, "w", encoding="utf-8") as f:
+    json.dump(seen_items, f, indent=2)
 
 print("Done.")
