@@ -1,21 +1,45 @@
 {
-  "dress_name": "Selkie Scottish Plaid Astronomer Gown",
-  "sizes": [
-    "Small",
-    "Medium",
-    "Large",
-    "S",
-    "M",
-    "L"
-  ],
-  "search_terms": [
-    "Selkie Scottish Plaid Astronomer Gown",
-    "Selkie Scotland Plaid Astronomer Gown",
-    "Scottish Plaid Astronomer",
-    "Scotland Plaid Astronomer",
-    "Selkie Plaid Astronomer",
-    "Selkie Astronomer Plaid",
-    "Selkie tartan dress"
+  "item": {
+    "name": "Selkie Scottish Plaid Astronomer Gown",
+    "sizes": ["Small", "Medium", "Large", "S", "M", "L"],
+    "must_include": ["selkie"],
+    "high_value_words": [
+      "astronomer",
+      "astronomers",
+      "plaid",
+      "scottish",
+      "scotland",
+      "tartan",
+      "gown",
+      "dress",
+      "green",
+      "puff sleeve",
+      "puff sleeves"
+    ],
+    "search_terms": [
+      "Selkie Scottish Plaid Astronomer Gown",
+      "Selkie Scotland Plaid Astronomer Gown",
+      "Selkie Scottish Plaid Astronomers Gown",
+      "Selkie Scotland Plaid Astronomers Gown",
+      "Selkie Plaid Astronomer",
+      "Selkie Astronomer Plaid",
+      "Selkie Astronomers Gown",
+      "Selkie Astronomer Gown",
+      "Selkie Scotland Plaid",
+      "Selkie Scottish Plaid",
+      "Selkie tartan dress",
+      "Selkie green plaid dress",
+      "Selkie puff sleeve plaid dress",
+      "green tartan Selkie",
+      "plaid Selkie gown"
+    ]
+  },
+  "sites": [
+    "ebay.com",
+    "poshmark.com",
+    "mercari.com",
+    "depop.com",
+    "vinted.com"
   ],
   "facebook_groups": [
     "Selkie Obsessed",
